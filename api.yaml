@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: Hackerkernel 
+  description: Danish APIs
+  version: 1.0.0
+servers:
+  - url: http://localhost:4000
+    description: Local server
+
+paths: 
+  /api/task/:  
+    get:
+      summary: Get all task.
+      tags:
+        - Task
+      responses:
+        200:
+          description: All task fetched successfully.
+        400:
+          description: Errore fetching task.
+    post:  
+      summary: Create a Task.
+      tags:
+        - Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskname:
+                  type: string
+                  default: Create Api
+                status:
+                  type: ENUM['Complited', 'Uncomplite', 'Running']
+                  example: Complited
+      responses:
+        200:
+          description: Task created successfully.
+        400:
+          description: Errore creating Task.
+  /api/task/{Id}:  
+    get:     
+      summary: Get a Task.
+      tags:
+        - Task
+      parameters:
+        - in: path
+          name: Id
+          default: 1
+      responses:
+        200:
+          description: Task fetched successfully.
+        400:
+          description: Errore fetching Task.
+    put:
+      summary: Upadate Task.
+      tags:
+        - Task
+      parameters:
+        - in : path
+          name: Id
+          default: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskname:
+                  type: string
+                  default: Create Api
+                status:
+                  type: ENUM['Complited', 'Uncomplite', 'Running']
+                  example: Complited
+      responses:
+        200:
+          description: Task updated successfully.
+        400:
+          description: Errore updating Task.
+    delete:  
+      summary: Delete Task.
+      tags:
+        - Task
+      parameters:
+        - in : path
+          name: Id
+          default: 1
+      responses:
+        200:
+          description: Task deleted successfully.
+        400:
+          description: Errore deleted Task.   
