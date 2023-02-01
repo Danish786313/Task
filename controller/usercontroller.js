@@ -1,17 +1,17 @@
-const { task } = require('../models')
+const { User } = require("../models")
 
 exports.create = async (req, res) => {
     console.log(req.body)
-    await task.create(req.body).then(task => {
+    await User.create(req.body).then(user => {
         res.status(200).json({
             success: true,
-            message: 'task added successfully',
-            result: task
+            message: 'User created successfully',
+            result: user
         })
     }).catch(error => {
         res.status(400).json({
             success: false,
-            message: 'Something went wrong while adding the task',
+            message: 'Something went wrong while Creating user',
             Error: error 
         })
     })

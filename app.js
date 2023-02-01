@@ -3,16 +3,19 @@ const app = express()
 app.set('view engine', 'ejs')
 require('dotenv').config()
 app.use(express.json())
+
 const cors = require('cors')
 app.use(cors())
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerdoc = YAML.load('./api.yaml') 
-app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerdoc));
 
+app.set('view engin', 'ejs')
+
+const views = require('./routes/view')
 const taskroute = require('./routes/taskroute')
-app.use('/api', taskroute)
+const user = require("./routes/userroute")
 
+app.use('/api', taskroute)
+app.use("/api", user)
+app.use("/views", views)
 app.get("/home", (req, res) => {
     res.status(200).json({
         successe : true,
