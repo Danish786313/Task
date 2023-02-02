@@ -10,6 +10,8 @@ exports.validate = (req, res, next) => {
     var extractedErrors = {}
     errors.array().map(err => extractedErrors[err.param]= err.msg )
     
+
+    return res.render("error.ejs", {error: extractedErrors})
     return res.status(422).json({
       success:false,
       error: extractedErrors,

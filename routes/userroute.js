@@ -5,7 +5,7 @@ const usercontroller = require("../controller/usercontroller")
 const { createUserValidation } = require('../validation/uservalidation');
 const { validate } = require('../validation/validate');
 
-router.post("/user", /* createUserValidation(), validate, */ usercontroller.create)
+router.post("/user", createUserValidation(), validate, usercontroller.create)
 
 
 module.exports = router

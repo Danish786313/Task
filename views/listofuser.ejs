@@ -27,36 +27,36 @@
         </div>
       </nav>
     <!-- Form  -->
+<!-- Table -->
 
-    <form class="container" action="/api/task" method="post" style="padding-top: 20px;">
-
-      <div class="mb-3">
-        <div class="dropdown show">
-          <label for="exampleInputPassword1" class="form-label">Select user</label>
-            <select id="volume" name="user_id" style="width: 1108px;">
-              <% for(let i=0; i<user.length; i++){ %>
-                <option value="<%= user[i].id %>"> <%= user[i].name %></option>
-              <% } %>
-            </select>
-          </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Task Name</label>
-        <input type="text" name="taskname" class="form-control" id="exampleInputPassword1">
-      </div>
-      <div class="mb-3">
-        <div class="dropdown show">
-          <label for="exampleInputPassword1" class="form-label">Task Status</label>
-            <select id="volume" name="tasktype" style="width: 1108px;">
-                <option value="Pending"> Pending </option>
-                <option value="Done"> Done </option>
-            </select>
-          </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <!-- Form -->
+<table class="container table table-sm" border="1px" class="">
+    <div style="padding-bottom: 10px; padding-top: 10px;">
+        <h3>All users with task</h3>
+    </div>
+    <thead>
+      <tr>
+        <th scope="col">S. no</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Task</th>
+        <th scope="col">Task Status</th>
+        <th scope="col">Email</th>
+        <th scope="col">Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(i=0;i<task.length;i++) { %>
+      <tr>
+        <td><%= i + 1%></td>
+        <td><%= task[i].User.name %></td>
+        <td><%= task[i].taskname %></td>
+        <td><%= task[i].tasktype %></td>
+        <td><%= task[i].User.email %></td>
+        <td><%= task[i].User.mobile %></td>
+      <%}%>
+    </tbody>
+  </table>
+<!-- Table -->
+    
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
